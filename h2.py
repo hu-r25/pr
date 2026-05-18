@@ -118,7 +118,7 @@ st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown('<div class="section-card"><p class="section-title"> 1. Prompt </p></div>', unsafe_allow_html=True)
 
 prompt_1 = """A photorealistic graduation portrait of the young girl from the original image, maintaining her specific facial features, eyes, and sweet smile. She is wearing a classic black graduation cap and gown. She is sitting behind a small wooden desk with a large, open book in front of her. The lighting is soft studio quality, creating a professional and nostalgic atmosphere.
-The background is a clean, neutral studio backdrop. High detail, 8k resolution.""""
+The background is a clean, neutral studio backdrop. High detail, 8k resolution."""
 
 # عرض النص داخل المربع المرتب المخصص للنسخ
 st.code(prompt_1, language="text")
