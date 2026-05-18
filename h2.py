@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# تصميم CSS احترافي بالكامل للوضع الداكن ومناسب للجوال ليكون التنسيق مرتباً
+# تصميم CSS سحري يخفي البوكس الرمادي تماماً ويجعل النص حراً وكاملاً
 st.markdown("""
     <style>
     /* خلفية التطبيق الداكنة */
@@ -31,7 +31,7 @@ st.markdown("""
         text-align: center;
     }
     
-    /* بطاقات العناوين المرتبة */
+    /* بطاقات العناوين */
     .section-card {
         background: #1e293b; 
         padding: 14px 18px;
@@ -49,39 +49,41 @@ st.markdown("""
         margin: 0;
     }
     
-    /* تنسيق النص الإنجليزي ليكون حراً تماماً وبدون أي بوكس أو حدود */
-    .prompt-text-pure {
-        color: #e2e8f0;
-        font-size: 16px;
-        line-height: 1.6;
-        text-align: left;
-        direction: ltr;
-        padding: 10px 5px;
-        word-wrap: break-word;
-        white-space: pre-wrap; /* للمحافظة على الأسطر كاملة ومنسقة */
+    /* إخفاء البوكس الرمادي والحدود والظلال تماماً وجعل الخلفية شفافة 100% */
+    div[data-testid="stCodeBlock"] {
+        background-color: transparent !important; 
+        border: none !important; 
+        box-shadow: none !important; 
+        padding: 0 !important;
     }
     
-    /* تخصيص شكل أزرار ستريمليت الأصلية لتصبح عريضة ومناسبة للمس على الجوال */
-    div.stButton > button {
-        background-color: #3b82f6 !important;
-        color: white !important;
-        border-radius: 10px !important;
-        border: none !important;
-        padding: 12px 20px !important;
+    /* تنسيق الخط ليظهر البرومبت ككتابة عادية حرة وممتدة بالكامل داخل الموقع */
+    div[data-testid="stCodeBlock"] pre {
+        background-color: transparent !important;
+        color: #e2e8f0 !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; 
         font-size: 15px !important;
-        font-weight: 600 !important;
-        width: 100% !important; /* يملأ عرض الشاشة لسهولة الضغط */
-        margin-top: 10px;
-        margin-bottom: 10px;
-        box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
-        transition: background-color 0.2s;
+        line-height: 1.6 !important;
+        white-space: pre-wrap !important; /* يمنع ظهور شريط التمرير ويجعل النص كاملاً ممتداً */
+        word-wrap: break-word !important;
+        padding: 10px 5px !important;
     }
     
-    div.stButton > button:hover {
+    /* تخصيص أيقونة النسخ الأصلية المستقرة وجعلها زرقاء واضحة في الزاوية */
+    div[data-testid="stCodeBlock"] button {
+        background-color: #3b82f6 !important; 
+        color: #ffffff !important;
+        border-radius: 8px !important;
+        padding: 6px 14px !important;
+        top: -12px !important; 
+        right: 0px !important;
+    }
+    
+    div[data-testid="stCodeBlock"] button:hover {
         background-color: #2563eb !important;
     }
     
-    /* إخفاء القوائم الإضافية لستريمليت */
+    /* إخفاء قوائم ستريمليت الإضافية ليكون المظهر نظيفاً */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
@@ -92,15 +94,6 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
-
-# تفعيل خاصية النسخ للحافظة عبر ميزة جافا سكريبت آمنة ومستقرة ترتبط بزر ستريمليت الرسمي
-def custom_copy_script(text_to_copy):
-    # كود مدمج وصغير للنسخ المباشر يتوافق مع أزرار ستريمليت بدون صناديق
-    st.components.v1.html(f"""
-        <script>
-        navigator.clipboard.writeText(`{text_to_copy}`);
-        </script>
-    """, height=0, width=0)
 
 # واجهة التطبيق الرئيسية
 st.markdown('<div class="rtl-container">', unsafe_allow_html=True)
@@ -126,13 +119,8 @@ Improve the photo quality, remove noise, scratches, and blur, enhance lighting a
 The final result should look realistic, clean, high-resolution, and like a professional studio graduation photo.
 Do not distort the face, eyes, hands, or body. Do not add random text, logos, or watermarks."""
 
-# عرض الكلام كامل وبدون أي بوكس نهائياً
-st.markdown(f'<div class="prompt-text-pure">{prompt_1}</div>', unsafe_allow_html=True)
-
-# زر النسخ الاحترافي المخصص للجوال أسفل النص مباشرة
-if st.button("📋 نسخ النص الأول كامل", key="btn1"):
-    custom_copy_script(prompt_1)
-    st.toast("تم نسخ النص الأول بنجاح! 🎉")
+# عرض النص عبر st.code المفرغ تماماً من الصندوق ليعمل زر النسخ الأصلي بكل استقرار
+st.code(prompt_1, language="text")
 
 
 # --- البرومبت الثاني ---
@@ -141,13 +129,10 @@ st.markdown('<div class="section-card"><p class="section-title">2. Prompt</p></d
 prompt_2 = """A photorealistic graduation portrait of the young girl from the original image, maintaining her specific facial features, eyes, and sweet smile. She is wearing a classic black graduation cap and gown. She is sitting behind a small wooden desk with a large, open book in front of her. The lighting is soft studio quality, creating a professional and nostalgic atmosphere.
 The background is a clean, neutral studio backdrop. High detail, 8k resolution."""
 
-# عرض الكلام الثاني كامل وبدون أي بوكس نهائياً
-st.markdown(f'<div class="prompt-text-pure">{prompt_2}</div>', unsafe_allow_html=True)
-
-# زر النسخ الاحترافي المخصص للجوال أسفل النص الثاني
-if st.button("📋 نسخ النص الثاني كامل", key="btn2"):
-    custom_copy_script(prompt_2)
-    st.toast("تم نسخ النص الثاني بنجاح! 🎉")
+# عرض النص الثاني حراً وبدون بوكس
+st.code(prompt_2, language="text")
 
 st.markdown("<hr>", unsafe_allow_html=True)
+st.markdown('<p style="text-align:center; color:#64748b; font-size:12px;">انقر على أيقونة النسخ الزرقاء في زاوية كل نص لنسخه مباشرة</p>', unsafe_allow_html=True)
+
 st.markdown('</div>', unsafe_allow_html=True)
