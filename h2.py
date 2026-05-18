@@ -8,12 +8,12 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# تصميم CSS احترافي مخصص بالكامل للوضع الداكن (Dark Mode) ومناسب للجوال
+# تصميم CSS احترافي مخصص بالكامل لجعل النصوص حرة وبدون أي بوكس
 st.markdown("""
     <style>
-    /* تحسين المظهر العام وخلفية التطبيق الداكنة */
+    /* خلفية التطبيق الداكنة */
     .stApp {
-        background-color: #0f172a; /* لون داكن مريح جداً للعين */
+        background-color: #0f172a; 
     }
     
     /* تنسيق النصوص العربية وتوجيهها */
@@ -24,20 +24,19 @@ st.markdown("""
     }
     
     .main-title {
-        color: #f8fafc; /* نص أبيض مائل للمطفي */
+        color: #f8fafc; 
         font-size: 26px;
         font-weight: 700;
         margin-bottom: 8px;
         text-align: center;
-        letter-spacing: -0.5px;
     }
     
-    /* بطاقات احترافية مبسطة لعرض العناوين تتناسب مع الوضع الداكن */
+    /* بطاقات العناوين */
     .section-card {
-        background: #1e293b; /* لون البطاقة أفتح قليلاً من الخلفية العامة */
+        background: #1e293b; 
         padding: 14px 18px;
         border-radius: 12px;
-        border-right: 5px solid #3b82f6; /* حافة زرقاء مميزة */
+        border-right: 5px solid #3b82f6; 
         margin-top: 24px;
         margin-bottom: 16px;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
@@ -50,48 +49,46 @@ st.markdown("""
         margin: 0;
     }
     
-    /* الخدعة السحرية: جعل صندوق الكود البرمجي شفاف وبدون حدود أو بوكس رمادي */
+    /* إخفاء البوكس الرمادي والحدود والظلال تماماً وجعل الخلفية شفافة */
     div[data-testid="stCodeBlock"] {
-        background-color: transparent !important; /* إزالة الخلفية الرمادية تماماً */
-        border: none !important; /* إزالة الحدود */
-        box-shadow: none !important; /* إزالة الظلال */
+        background-color: transparent !important; 
+        border: none !important; 
+        box-shadow: none !important; 
         padding: 0 !important;
     }
     
-    /* تنسيق الخط والأسطر ليظهر البرومبت بشكل كامل ومريح جداً للقراءة */
+    /* تنسيق الخط ليظهر البرومبت ككتابة عادية ممتدة بالكامل داخل الموقع */
     div[data-testid="stCodeBlock"] pre {
         background-color: transparent !important;
         color: #e2e8f0 !important;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; /* خط حديث بدلاً من الخط البرمجي المزعج */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; 
         font-size: 15px !important;
         line-height: 1.6 !important;
-        white-space: pre-wrap !important; /* إظهار النص كاملاً بدون شريط تمرين جانبي */
+        white-space: pre-wrap !important; /* يمنع ظهور شريط التمرير ويجعل النص كاملاً */
         word-wrap: break-word !important;
         padding: 10px 5px !important;
     }
     
-    /* تخصيص زر النسخ الأصلي لـ Streamlit وجعله بارزاً واحترافياً باللون الأزرق وملائماً للجوال */
+    /* تخصيص زر النسخ وجعله متناسقاً ومريحاً للمس */
     div[data-testid="stCodeBlock"] button {
-        background-color: #3b82f6 !important; /* زر أزرق برّاق */
+        background-color: #3b82f6 !important; 
         color: #ffffff !important;
         border-radius: 8px !important;
         padding: 6px 14px !important;
-        top: -10px !important; /* تعديل موقعه ليكون متناسقاً */
+        top: -12px !important; 
         right: 0px !important;
         font-weight: 600 !important;
-        box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
     }
     
     div[data-testid="stCodeBlock"] button:hover {
         background-color: #2563eb !important;
     }
     
-    /* إخفاء القوائم والخطوط العلوية الإضافية لتبدو كتطبيق مستقل ونظيف */
+    /* إخفاء قوائم ستريمليت الإضافية ليكون المظهر نظيفاً */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
     
-    /* تحسين الخط الفاصل */
     hr {
         border-color: #334155 !important;
         margin: 20px 0 !important;
@@ -123,7 +120,7 @@ Improve the photo quality, remove noise, scratches, and blur, enhance lighting a
 The final result should look realistic, clean, high-resolution, and like a professional studio graduation photo.
 Do not distort the face, eyes, hands, or body. Do not add random text, logos, or watermarks."""
 
-# استخدام st.code المفرغ من الخلفية عبر الـ CSS ليعطي شكلاً منساباً كاملاً مع ميزة النسخ المستقرة 
+# عرض النص ككتابة حرة بدون بوكس مع زر نسخ مستقر
 st.code(prompt_1, language="text")
 
 
@@ -133,12 +130,11 @@ st.markdown('<div class="section-card"><p class="section-title">2. Prompt</p></d
 prompt_2 = """A photorealistic graduation portrait of the young girl from the original image, maintaining her specific facial features, eyes, and sweet smile. She is wearing a classic black graduation cap and gown. She is sitting behind a small wooden desk with a large, open book in front of her. The lighting is soft studio quality, creating a professional and nostalgic atmosphere.
 The background is a clean, neutral studio backdrop. High detail, 8k resolution."""
 
-# استخدام st.code المفرغ من الخلفية للبرومبت الثاني
+# عرض النص الثاني ككتابة حرة بدون بوكس مع زر نسخ مستقر
 st.code(prompt_2, language="text")
 
 st.markdown("<hr>", unsafe_allow_html=True)
 
-# تذييل الصفحة
 st.markdown('<p style="text-align:center; color:#64748b; font-size:12px;">انقر على أيقونة النسخ الزرقاء في زاوية كل نص لنسخه مباشرة</p>', unsafe_allow_html=True)
 
 st.markdown('</div>', unsafe_allow_html=True)
