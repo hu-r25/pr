@@ -110,7 +110,7 @@ st.markdown("""
 st.markdown('<div class="rtl-container">', unsafe_allow_html=True)
 
 st.markdown('<div class="main-title">🎓 Prompt Graduation </div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">.</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title"></div>', unsafe_allow_html=True)
 
 st.markdown("<hr>", unsafe_allow_html=True)
 
