@@ -83,7 +83,7 @@ st.markdown("<hr>", unsafe_allow_html=True)
 # --- البرومبت الأول ---
 st.markdown('<div class="section-card"><p class="section-title">1. Prompt🎓</p></div>', unsafe_allow_html=True)
 
-prompt_1 = """Transform the attached photo into a professional graduation portrait with a Computer Science theme.
+prompt_1 = """Transform the attached photo into a professional graduation portrait with a (القسم مالكم) theme.
 
 Keep the same original facial features and identity without changing the age, eyes, nose, mouth, or face shape.
 Place the person in the center with a straight, neat posture, looking naturally at the camera.
@@ -91,8 +91,6 @@ Place the person in the center with a straight, neat posture, looking naturally 
 Dress the person in a formal black graduation gown with a straight black square graduation cap on the head, and a gold tassel on the side of the cap.
 Add a white shirt and black tie under the gown if suitable.
  
-هنا الجزء الي يتغير ( تخلون بي قسمكم وتفاصيل الي تردوها بالباكراوند ) 
-Use a Computer Science background: dark blue tech studio, computer screens with programming code, circuit lines, digital icons, and soft blue lighting.
 Improve the photo quality, remove noise, scratches, and blur, enhance lighting and colors, and make the skin tone natural and clear for printing without over-editing.
 
 The final result should look realistic, clean, high-resolution, and like a professional studio graduation photo.
