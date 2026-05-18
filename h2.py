@@ -2,7 +2,7 @@ import streamlit as st
 
 # إعدادات الصفحة - الافتراضية للجوال والوضع الداكن
 st.set_page_config(
-    page_title="  التخرج برومبت ", 
+    page_title="  CS ", 
     page_icon="🎓", 
     layout="centered",
     initial_sidebar_state="collapsed"
@@ -109,13 +109,13 @@ st.markdown("""
 # واجهة التطبيق الرئيسية
 st.markdown('<div class="rtl-container">', unsafe_allow_html=True)
 
-st.markdown('<div class="main-title">🎓 مساعد البرومبت الذكي</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-title">🎓 Prompt Graduation </div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-title">منصة احترافية بالوضع الداكن مخصصة للجوال لنسخ الأوامر بضغطة زر واحدة وبشكل مرتب.</div>', unsafe_allow_html=True)
 
 st.markdown("<hr>", unsafe_allow_html=True)
 
 # --- البرومبت الأول ---
-st.markdown('<div class="section-card"><p class="section-title">📋 1. البرومبت الكلاسيكي (صورة طفلة)</p></div>', unsafe_allow_html=True)
+st.markdown('<div class="section-card"><p class="section-title"> 1. Prompt </p></div>', unsafe_allow_html=True)
 
 prompt_1 = """A photorealistic graduation portrait of the young girl from the original image, maintaining her specific facial features, eyes, and sweet smile. She is wearing a classic black graduation cap and gown. She is sitting behind a small wooden desk with a large, open book in front of her. The lighting is soft studio quality, creating a professional and nostalgic atmosphere.
 The background is a clean, neutral studio backdrop. High detail, 8k resolution."""
@@ -125,7 +125,7 @@ st.code(prompt_1, language="text")
 
 
 # --- البرومبت الثاني ---
-st.markdown('<div class="section-card"><p class="section-title">💻 2. برومبت التخرج (علوم الحاسوب)</p></div>', unsafe_allow_html=True)
+st.markdown('<div class="section-card"><p class="section-title"> 2. Prompt </p></div>', unsafe_allow_html=True)
 
 prompt_2 = """Transform the attached photo into a professional graduation portrait with a Computer Science theme.
 
