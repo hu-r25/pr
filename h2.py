@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# تصميم CSS احترافي مخصص لإخفاء البوكس تماماً وجعل زر النسخ ممتازاً للجوال
+# تصميم CSS احترافي مخصص للوضع الداكن (Dark Mode) ليظهر النص حراً بالكامل وبدون أي بوكس
 st.markdown("""
     <style>
     /* خلفية التطبيق الداكنة */
@@ -31,7 +31,7 @@ st.markdown("""
         text-align: center;
     }
     
-    /* بطاقات العناوين */
+    /* بطاقات العناوين السلسة */
     .section-card {
         background: #1e293b; 
         padding: 14px 18px;
@@ -49,48 +49,43 @@ st.markdown("""
         margin: 0;
     }
     
-    /* إخفاء البوكس الرمادي والحدود والظلال تماماً (جعلها مخفية وشفافة 100%) */
-    div[data-testid="stCodeBlock"] {
-        background-color: transparent !important; 
-        border: none !important; 
-        box-shadow: none !important; 
-        padding: 0 !important;
-        margin-bottom: 25px !important;
+    /* تنسيق النص الإنجليزي ليكون حراً تماماً وصافياً وبدون أي بوكس أو حدود نهائياً */
+    .prompt-text-pure {
+        color: #e2e8f0;
+        font-size: 16px;
+        line-height: 1.6;
+        text-align: left;
+        direction: ltr;
+        padding: 12px 5px;
+        word-wrap: break-word;
+        white-space: pre-wrap; /* للمحافظة على الأسطر كاملة وممتدة */
+        user-select: text; /* السماح للمستخدم بتحديده يدوياً أيضاً إذا أراد */
     }
     
-    /* تنسيق الخط ليظهر البرومبت ككتابة عادية كاملة وحرة داخل الموقع */
-    div[data-testid="stCodeBlock"] pre {
-        background-color: transparent !important;
-        color: #e2e8f0 !important;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; 
-        font-size: 15px !important;
-        line-height: 1.6 !important;
-        white-space: pre-wrap !important; /* يمنع شريط التمرير ويجعل النص كاملاً ممتداً للأسفل */
-        word-wrap: break-word !important;
-        padding: 10px 5px !important;
-    }
-    
-    /* تخصيص زر النسخ الأصلي المستقر وجعله أزرق عريض واضح أسفل النص مباشرة */
-    div[data-testid="stCodeBlock"] button {
-        position: relative !important;
-        display: block !important;
-        background-color: #3b82f6 !important; 
-        color: #ffffff !important;
-        border-radius: 10px !important;
-        padding: 10px 20px !important;
-        font-size: 14px !important;
-        font-weight: 600 !important;
-        width: 100% !important; /* يأخذ عرض الشاشة بالكامل ليسهل ضغطه بالجوال */
-        top: 10px !important; 
-        right: 0px !important;
+    /* تصميم زر النسخ الاحترافي والمنفصل أسفل النص */
+    .custom-copy-btn {
+        display: block;
+        width: 100%;
+        background-color: #3b82f6;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-bottom: 25px;
         box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+        text-align: center;
+        -webkit-tap-highlight-color: transparent;
     }
     
-    div[data-testid="stCodeBlock"] button:hover {
-        background-color: #2563eb !important;
+    .custom-copy-btn:active {
+        background-color: #2563eb;
     }
     
-    /* إخفاء قوائم ستريمليت الإضافية ليكون المظهر نظيفاً كأنه تطبيق مستقل */
+    /* إخفاء قوائم ستريمليت الإضافية ليكون المظهر نظيفاً */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
@@ -126,8 +121,25 @@ Improve the photo quality, remove noise, scratches, and blur, enhance lighting a
 The final result should look realistic, clean, high-resolution, and like a professional studio graduation photo.
 Do not distort the face, eyes, hands, or body. Do not add random text, logos, or watermarks."""
 
-# عرض النص بطريقة تضمن عمل زر النسخ وبدون ظهور أي بوكس رمادي
-st.code(prompt_1, language="text")
+# عرض الكلام ككتابة عادية حرة وصافية 100% بدون أي بوكس
+st.markdown(f'<div class="prompt-text-pure">{prompt_1}</div>', unsafe_allow_html=True)
+
+# زر النسخ المنفصل تماماً والذي يدعم متصفحات الجوال بنجاح وبدون حظر أمني
+st.html(f"""
+<button class="custom-copy-btn" onclick="
+    const textArea = document.createElement('textarea');
+    textArea.value = `{prompt_1}`;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {{
+        document.execCommand('copy');
+        alert('تم نسخ النص الأول بنجاح! 🎉');
+    }} catch (err) {{
+        alert('عذراً، فشل النسخ التلقائي، يمكنك نسخه يدوياً.');
+    }}
+    document.body.removeChild(textArea);
+">📋 نسخ النص الأول كامل</button>
+""")
 
 
 # --- البرومبت الثاني ---
@@ -136,8 +148,25 @@ st.markdown('<div class="section-card"><p class="section-title">2. Prompt</p></d
 prompt_2 = """A photorealistic graduation portrait of the young girl from the original image, maintaining her specific facial features, eyes, and sweet smile. She is wearing a classic black graduation cap and gown. She is sitting behind a small wooden desk with a large, open book in front of her. The lighting is soft studio quality, creating a professional and nostalgic atmosphere.
 The background is a clean, neutral studio backdrop. High detail, 8k resolution."""
 
-# عرض النص الثاني كاملاً وحراً مع زر النسخ الخاص به
-st.code(prompt_2, language="text")
+# عرض الكلام الثاني ككتابة عادية حرة وصافية 100% بدون أي بوكس
+st.markdown(f'<div class="prompt-text-pure">{prompt_2}</div>', unsafe_allow_html=True)
+
+# زر النسخ المنفصل للنص الثاني
+st.html(f"""
+<button class="custom-copy-btn" onclick="
+    const textArea = document.createElement('textarea');
+    textArea.value = `{prompt_2}`;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {{
+        document.execCommand('copy');
+        alert('تم نسخ النص الثاني بنجاح! 🎉');
+    }} catch (err) {{
+        alert('عذراً، فشل النسخ التلقائي، يمكنك نسخه يدوياً.');
+    }}
+    document.body.removeChild(textArea);
+">📋 نسخ النص الثاني كامل</button>
+""")
 
 st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
