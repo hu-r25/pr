@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# تصميم CSS سحري يدمج أيقونة النسخ بجانب العنوان ويخفي أي بوكس رمادي نهائياً
+# تصميم CSS احترافي للوضع الداكن ليعرض النص ككتابة عادية تماماً وبدون أي بوكس
 st.markdown("""
     <style>
     /* خلفية التطبيق الداكنة */
@@ -31,18 +31,15 @@ st.markdown("""
         text-align: center;
     }
     
-    /* تصميم بطاقات العناوين المدمجة مع زر النسخ */
-    .section-card-wrapper {
+    /* بطاقات العناوين الملساء النظيفة */
+    .section-card {
         background: #1e293b; 
-        padding: 6px 14px;
+        padding: 14px 18px;
         border-radius: 12px;
         border-right: 5px solid #3b82f6; 
         margin-top: 24px;
-        margin-bottom: 12px;
+        margin-bottom: 16px;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
     }
     
     .section-title {
@@ -52,44 +49,19 @@ st.markdown("""
         margin: 0;
     }
     
-    /* إخفاء البوكس الرمادي والحدود والظلال تماماً وجعل خلفية النص شفافة 100% */
-    div[data-testid="stCodeBlock"] {
-        background-color: transparent !important; 
-        border: none !important; 
-        box-shadow: none !important; 
-        padding: 0 !important;
-        margin-top: -10px !important;
+    /* تنسيق النص الإنجليزي ليكون حراً وصافياً 100% ككتابة عادية وبدون أي أثر للبوكسات */
+    .prompt-text-pure {
+        color: #e2e8f0;
+        font-size: 16px;
+        line-height: 1.6;
+        text-align: left;
+        direction: ltr;
+        padding: 12px 5px;
+        word-wrap: break-word;
+        white-space: pre-wrap; /* المحافظة على تنسيق الأسطر ممتدة بالكامل */
     }
     
-    /* تنسيق الخط ليظهر البرومبت ككتابة عادية كاملة وحرة داخل الموقع وبدون أي بوكس */
-    div[data-testid="stCodeBlock"] pre {
-        background-color: transparent !important;
-        color: #e2e8f0 !important;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; 
-        font-size: 15px !important;
-        line-height: 1.6 !important;
-        white-space: pre-wrap !important; /* يمنع شريط التمرير ويجعل النص كاملاً ممتداً للأسفل */
-        word-wrap: break-word !important;
-        padding: 10px 5px !important;
-    }
-    
-    /* تحريك أيقونة النسخ الأصلية المستقرة لتصبح بجانب مربع الرقم والعنوان تماماً */
-    div[data-testid="stCodeBlock"] button {
-        background-color: #3b82f6 !important; 
-        color: #ffffff !important;
-        border-radius: 8px !important;
-        padding: 5px 12px !important;
-        position: absolute !important;
-        top: -54px !important; /* رفع الأيقونة لتصعد بجانب العنوان */
-        right: 12px !important; /* تحديد مكانها جهة اليمين داخل المتصفح الإنجليزي */
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    div[data-testid="stCodeBlock"] button:hover {
-        background-color: #2563eb !important;
-    }
-    
-    /* إخفاء قوائم ستريمليت الإضافية */
+    /* إخفاء قوائم ستريمليت الإضافية ليكون المظهر نظيفاً وصافياً */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
@@ -109,7 +81,7 @@ st.markdown('<div class="main-title">🎓 Prompt Graduation</div>', unsafe_allow
 st.markdown("<hr>", unsafe_allow_html=True)
 
 # --- البرومبت الأول ---
-st.markdown('<div class="section-card-wrapper"><p class="section-title">1. Prompt</p><div></div></div>', unsafe_allow_html=True)
+st.markdown('<div class="section-card"><p class="section-title">1. Prompt</p></div>', unsafe_allow_html=True)
 
 prompt_1 = """Transform the attached photo into a professional graduation portrait with a Computer Science theme.
 
@@ -125,18 +97,18 @@ Improve the photo quality, remove noise, scratches, and blur, enhance lighting a
 The final result should look realistic, clean, high-resolution, and like a professional studio graduation photo.
 Do not distort the face, eyes, hands, or body. Do not add random text, logos, or watermarks."""
 
-# عرض النص بطريقة تضمن عمل زر النسخ وبدون ظهور أي بوكس رمادي
-st.code(prompt_1, language="text")
+# عرض الكلام ككتابة حرة وصافية تماماً بدون أي بوكس وبدون أزرار نسخ
+st.markdown(f'<div class="prompt-text-pure">{prompt_1}</div>', unsafe_allow_html=True)
 
 
 # --- البرومبت الثاني ---
-st.markdown('<div class="section-card-wrapper"><p class="section-title">2. Prompt</p><div></div></div>', unsafe_allow_html=True)
+st.markdown('<div class="section-card"><p class="section-title">2. Prompt</p></div>', unsafe_allow_html=True)
 
 prompt_2 = """A photorealistic graduation portrait of the young girl from the original image, maintaining her specific facial features, eyes, and sweet smile. She is wearing a classic black graduation cap and gown. She is sitting behind a small wooden desk with a large, open book in front of her. The lighting is soft studio quality, creating a professional and nostalgic atmosphere.
 The background is a clean, neutral studio backdrop. High detail, 8k resolution."""
 
-# عرض النص الثاني كاملاً وحراً مع زر النسخ الخاص به بجانب عنوانه
-st.code(prompt_2, language="text")
+# عرض الكلام الثاني ككتابة حرة وصافية تماماً بدون أي بوكس وبدون أزرار نسخ
+st.markdown(f'<div class="prompt-text-pure">{prompt_2}</div>', unsafe_allow_html=True)
 
 st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
