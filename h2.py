@@ -83,7 +83,7 @@ st.markdown("<hr>", unsafe_allow_html=True)
 # --- البرومبت الأول ---
 st.markdown('<div class="section-card"><p class="section-title">1. Prompt🎓</p></div>', unsafe_allow_html=True)
 
-prompt_1 = """Transform the attached photo into a professional graduation portrait with a (القسم مالكم) theme.
+prompt_1 = """Transform the attached photo into a professional graduation portrait with a (القسم مالتكم) theme.
 
 Keep the same original facial features and identity without changing the age, eyes, nose, mouth, or face shape.
 Place the person in the center with a straight, neat posture, looking naturally at the camera.
