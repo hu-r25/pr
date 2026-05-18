@@ -106,7 +106,7 @@ st.markdown("""
 st.markdown('<div class="rtl-container">', unsafe_allow_html=True)
 
 st.markdown('<div class="main-title">🎓 Prompt Graduation</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">منصة احترافية بالوضع الداكن مخصصة للجوال لعرض الأوامر بالكامل ونسخها بضغطة زر.</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title"></div>', unsafe_allow_html=True)
 
 st.markdown("<hr>", unsafe_allow_html=True)
 
@@ -147,6 +147,7 @@ Place the person in the center with a straight, neat posture, looking naturally 
 Dress the person in a formal black graduation gown with a straight black square graduation cap on the head, and a gold tassel on the side of the cap.
 Add a white shirt and black tie under the gown if suitable.
  
+هنا الجزء الي يتغير ( تخلون بي قسمكم وتفاصيل الي تردوها بالباكراوند ) 
 Use a Computer Science background: dark blue tech studio, computer screens with programming code, circuit lines, digital icons, and soft blue lighting.
 Improve the photo quality, remove noise, scratches, and blur, enhance lighting and colors, and make the skin tone natural and clear for printing without over-editing.
 
@@ -175,6 +176,6 @@ st.html(f"""
 st.markdown("<hr>", unsafe_allow_html=True)
 
 # تذييل الصفحة
-st.markdown('<p style="text-align:center; color:#64748b; font-size:12px;">اضغط على الزر الأزرق الكبير لنسخ النص كاملاً إلى الحافظة فوراً</p>', unsafe_allow_html=True)
+st.markdown('<p style="text-align:center; color:#64748b; font-size:12px;"></p>', unsafe_allow_html=True)
 
 st.markdown('</div>', unsafe_allow_html=True)
