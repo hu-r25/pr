@@ -2,7 +2,7 @@ import streamlit as st
 
 # إعدادات الصفحة - الافتراضية للجوال والوضع الداكن
 st.set_page_config(
-    page_title="  CS ", 
+    page_title="CS", 
     page_icon="🎓", 
     layout="centered",
     initial_sidebar_state="collapsed"
@@ -47,7 +47,7 @@ st.markdown("""
         border-radius: 12px;
         border-right: 5px solid #3b82f6; /* حافة زرقاء مميزة */
         margin-top: 24px;
-        margin-bottom: 12px;
+        margin-bottom: 16px;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
     }
     
@@ -58,38 +58,34 @@ st.markdown("""
         margin: 0;
     }
     
-    /* تحسين مظهر مربع النص (صندوق الكود) بالكامل ليكون مرتباً واحترافياً */
-    div[data-testid="stCodeBlock"] {
-        border-radius: 12px !important;
-        border: 1px solid #334155 !important; /* حدود داكنة متناسقة */
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3) !important;
-        background-color: #1e293b !important; /* نفس لون البطاقات الفاخرة */
-        padding: 4px !important;
+    /* تنسيق النصوص الإنجليزية المراد نسخها لتظهر بشكل كامل وبدون بوكس رمادي */
+    .prompt-text {
+        color: #e2e8f0;
+        font-size: 15px;
+        line-height: 1.6;
+        text-align: left;
+        direction: ltr;
+        background: transparent;
+        padding: 10px 5px;
+        word-wrap: break-word;
+        white-space: pre-wrap; /* للمحافظة على الأسطر الجديدة */
     }
     
-    /* تعديل النص داخل مربع الكود ليكون واضحاً وقابلاً للقراءة */
-    div[data-testid="stCodeBlock"] pre {
-        background-color: #1e293b !important;
-        color: #e2e8f0 !important;
-        font-family: 'Courier New', Courier, monospace !important;
-        font-size: 14px !important;
-        line-height: 1.5 !important;
-        padding: 12px !important;
-    }
-    
-    /* جعل زر النسخ بارزاً ومريحاً جداً للمس على الجوال */
-    div[data-testid="stCodeBlock"] button {
-        background-color: #3b82f6 !important; /* زر أزرق برّاق */
-        color: #ffffff !important;
+    /* تخصيص زر النسخ المطور لستريمليت ليناسب التصميم */
+    div.stButton > button {
+        background-color: #3b82f6 !important;
+        color: white !important;
         border-radius: 8px !important;
-        padding: 6px 14px !important;
-        top: 12px !important;
-        right: 12px !important;
+        border: none !important;
+        padding: 6px 20px !important;
+        font-size: 14px !important;
         font-weight: 600 !important;
-        transition: background-color 0.2s ease;
+        width: 100% !important; /* يأخذ عرض الشاشة بالكامل في الجوال لسهولة الضغط */
+        margin-top: 8px;
+        box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
     }
     
-    div[data-testid="stCodeBlock"] button:hover {
+    div.stButton > button:hover {
         background-color: #2563eb !important;
     }
     
@@ -109,23 +105,39 @@ st.markdown("""
 # واجهة التطبيق الرئيسية
 st.markdown('<div class="rtl-container">', unsafe_allow_html=True)
 
-st.markdown('<div class="main-title">🎓 Prompt Graduation </div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title"></div>', unsafe_allow_html=True)
+st.markdown('<div class="main-title">🎓 Prompt Graduation</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title">منصة احترافية بالوضع الداكن مخصصة للجوال لعرض الأوامر بالكامل ونسخها بضغطة زر.</div>', unsafe_allow_html=True)
 
 st.markdown("<hr>", unsafe_allow_html=True)
 
 # --- البرومبت الأول ---
-st.markdown('<div class="section-card"><p class="section-title"> 1. Prompt </p></div>', unsafe_allow_html=True)
+st.markdown('<div class="section-card"><p class="section-title">1. Prompt</p></div>', unsafe_allow_html=True)
 
 prompt_1 = """A photorealistic graduation portrait of the young girl from the original image, maintaining her specific facial features, eyes, and sweet smile. She is wearing a classic black graduation cap and gown. She is sitting behind a small wooden desk with a large, open book in front of her. The lighting is soft studio quality, creating a professional and nostalgic atmosphere.
 The background is a clean, neutral studio backdrop. High detail, 8k resolution."""
 
-# عرض النص داخل المربع المرتب المخصص للنسخ
-st.code(prompt_1, language="text")
+# عرض النص كاملاً ككتابة عادية بدون بوكس كود
+st.markdown(f'<div class="prompt-text">{prompt_1}</div>', unsafe_allow_html=True)
+
+# زر النسخ المخصص تحت النص الأول مباشرة
+st.html(f"""
+<button onclick="navigator.clipboard.writeText(`{prompt_1}`).then(() => {{ alert('تم نسخ البرومبت الأول بنجاح! 🎉'); }})" style="
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 8px;
+    cursor: pointer;
+">📋 نسخ البرومبت الأول</button>
+""")
 
 
 # --- البرومبت الثاني ---
-st.markdown('<div class="section-card"><p class="section-title"> 2. Prompt </p></div>', unsafe_allow_html=True)
+st.markdown('<div class="section-card"><p class="section-title">2. Prompt</p></div>', unsafe_allow_html=True)
 
 prompt_2 = """Transform the attached photo into a professional graduation portrait with a Computer Science theme.
 
@@ -135,18 +147,34 @@ Place the person in the center with a straight, neat posture, looking naturally 
 Dress the person in a formal black graduation gown with a straight black square graduation cap on the head, and a gold tassel on the side of the cap.
 Add a white shirt and black tie under the gown if suitable.
  
-هنا الجزء الي يتغير ( تخلون بي قسمكم وتفاصيل الي تردوها بالباكراوند ) 
 Use a Computer Science background: dark blue tech studio, computer screens with programming code, circuit lines, digital icons, and soft blue lighting.
 Improve the photo quality, remove noise, scratches, and blur, enhance lighting and colors, and make the skin tone natural and clear for printing without over-editing.
 
 The final result should look realistic, clean, high-resolution, and like a professional studio graduation photo.
 Do not distort the face, eyes, hands, or body. Do not add random text, logos, or watermarks."""
 
-st.code(prompt_2, language="text")
+# عرض النص الثاني كاملاً ككتابة عادية بدون بوكس كود
+st.markdown(f'<div class="prompt-text">{prompt_2}</div>', unsafe_allow_html=True)
+
+# زر النسخ المخصص تحت النص الثاني مباشرة
+st.html(f"""
+<button onclick="navigator.clipboard.writeText(`{prompt_2}`).then(() => {{ alert('تم نسخ البرومبت الثاني بنجاح! 🎉'); }})" style="
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 8px;
+    cursor: pointer;
+">📋 نسخ البرومبت الثاني</button>
+""")
 
 st.markdown("<hr>", unsafe_allow_html=True)
 
 # تذييل الصفحة
-st.markdown('<p style="text-align:center; color:#64748b; font-size:12px;"></p>', unsafe_allow_html=True)
+st.markdown('<p style="text-align:center; color:#64748b; font-size:12px;">اضغط على الزر الأزرق الكبير لنسخ النص كاملاً إلى الحافظة فوراً</p>', unsafe_allow_html=True)
 
 st.markdown('</div>', unsafe_allow_html=True)
