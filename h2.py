@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# تصميم CSS احترافي مخصص للوضع الداكن ليظهر النص حراً بالكامل وبدون أي بوكس رمادي
+# تصميم CSS احترافي مخصص بالكامل لجعل النصوص حرة والأزرار متناسقة
 st.markdown("""
     <style>
     /* خلفية التطبيق الداكنة */
@@ -31,7 +31,7 @@ st.markdown("""
         text-align: center;
     }
     
-    /* بطاقات العناوين السلسة */
+    /* بطاقات العناوين */
     .section-card {
         background: #1e293b; 
         padding: 14px 18px;
@@ -49,7 +49,7 @@ st.markdown("""
         margin: 0;
     }
     
-    /* تنسيق النص الإنجليزي ليكون حراً تماماً وصافياً وبدون أي بوكس أو حدود رمادية */
+    /* تنسيق النص الإنجليزي ليكون حراً تماماً وصافياً وبدون أي بوكس رمادي أو حدود نهائياً */
     .prompt-text-pure {
         color: #e2e8f0;
         font-size: 16px;
@@ -58,27 +58,29 @@ st.markdown("""
         direction: ltr;
         padding: 12px 5px;
         word-wrap: break-word;
-        white-space: pre-wrap; /* للمحافظة على الأسطر كاملة ومنسقة */
+        white-space: pre-wrap; /* للمحافظة على الأسطر كاملة وممتدة للأسفل */
     }
     
-    /* تخصيص شكل أزرار ستريمليت الأصلية لتصبح عريضة ومناسبة للمس على الجوال */
-    div.stButton > button {
-        background-color: #3b82f6 !important;
-        color: white !important;
-        border-radius: 10px !important;
-        border: none !important;
-        padding: 12px 20px !important;
-        font-size: 15px !important;
-        font-weight: 600 !important;
-        width: 100% !important; /* يملأ عرض الشاشة لسهولة الضغط */
+    /* تصميم زر التحديد والتظليل السحري أسفل النص */
+    .select-btn {
+        display: block;
+        width: 100%;
+        background-color: #3b82f6;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
         margin-top: 10px;
-        margin-bottom: 15px;
+        margin-bottom: 30px;
         box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
-        transition: background-color 0.2s;
+        text-align: center;
     }
     
-    div.stButton > button:hover {
-        background-color: #2563eb !important;
+    .select-btn:active {
+        background-color: #2563eb;
     }
     
     /* إخفاء قوائم ستريمليت الإضافية ليكون المظهر نظيفاً */
@@ -117,13 +119,20 @@ Improve the photo quality, remove noise, scratches, and blur, enhance lighting a
 The final result should look realistic, clean, high-resolution, and like a professional studio graduation photo.
 Do not distort the face, eyes, hands, or body. Do not add random text, logos, or watermarks."""
 
-# عرض الكلام ككتابة عادية حرة وصافية 100% بدون أي بوكس
-st.markdown(f'<div class="prompt-text-pure">{prompt_1}</div>', unsafe_allow_html=True)
+# عرض الكلام ككتابة عادية حرة وصافية 100% بدون أي بوكس مع إعطائه معرّف ID للتحديد
+st.markdown(f'<div id="p1" class="prompt-text-pure">{prompt_1}</div>', unsafe_allow_html=True)
 
-# زر النسخ المنفصل والمستقر المعتمد على خوادم ستريمليت مباشرة
-if st.button("📋 اضغط هنا لتجهيز نسخ النص الأول", key="btn1"):
-    st.success("اضغط ضغطة مطولة على النص بالأسفل لنسخه فوراً:")
-    st.text_area(label="", value=prompt_1, height=180, disabled=False, label_visibility="collapsed")
+# زر التحديد التلقائي المضمون للجوال للنص الأول
+st.html("""
+<button class="select-btn" onclick="
+    const textNode = document.getElementById('p1');
+    const range = document.createRange();
+    range.selectNodeContents(textNode);
+    const select = window.getSelection();
+    select.removeAllRanges();
+    select.addRange(range);
+">📋 اضغط هنا لتظليل النص الأول (ثم اختر نسخ)</button>
+""")
 
 
 # --- البرومبت الثاني ---
@@ -133,12 +142,19 @@ prompt_2 = """A photorealistic graduation portrait of the young girl from the or
 The background is a clean, neutral studio backdrop. High detail, 8k resolution."""
 
 # عرض الكلام الثاني ككتابة عادية حرة وصافية 100% بدون أي بوكس
-st.markdown(f'<div class="prompt-text-pure">{prompt_2}</div>', unsafe_allow_html=True)
+st.markdown(f'<div id="p2" class="prompt-text-pure">{prompt_2}</div>', unsafe_allow_html=True)
 
-# زر النسخ المنفصل والمستقر للبرومبت الثاني
-if st.button("📋 اضغط هنا لتجهيز نسخ النص الثاني", key="btn2"):
-    st.success("اضغط ضغطة مطولة على النص بالأسفل لنسخه فوراً:")
-    st.text_area(label="", value=prompt_2, height=120, disabled=False, label_visibility="collapsed")
+# زر التحديد التلقائي المضمون للجوال للنص الثاني
+st.html("""
+<button class="select-btn" onclick="
+    const textNode = document.getElementById('p2');
+    const range = document.createRange();
+    range.selectNodeContents(textNode);
+    const select = window.getSelection();
+    select.removeAllRanges();
+    select.addRange(range);
+">📋 اضغط هنا لتظليل النص الثاني (ثم اختر نسخ)</button>
+""")
 
 st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
