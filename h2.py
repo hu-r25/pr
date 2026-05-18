@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# تصميم CSS احترافي مخصص للوضع الداكن (Dark Mode) ليظهر النص حراً بالكامل وبدون أي بوكس
+# تصميم CSS احترافي مخصص للوضع الداكن ليظهر النص حراً بالكامل وبدون أي بوكس رمادي
 st.markdown("""
     <style>
     /* خلفية التطبيق الداكنة */
@@ -49,7 +49,7 @@ st.markdown("""
         margin: 0;
     }
     
-    /* تنسيق النص الإنجليزي ليكون حراً تماماً وصافياً وبدون أي بوكس أو حدود نهائياً */
+    /* تنسيق النص الإنجليزي ليكون حراً تماماً وصافياً وبدون أي بوكس أو حدود رمادية */
     .prompt-text-pure {
         color: #e2e8f0;
         font-size: 16px;
@@ -58,31 +58,27 @@ st.markdown("""
         direction: ltr;
         padding: 12px 5px;
         word-wrap: break-word;
-        white-space: pre-wrap; /* للمحافظة على الأسطر كاملة وممتدة */
-        user-select: text; /* السماح للمستخدم بتحديده يدوياً أيضاً إذا أراد */
+        white-space: pre-wrap; /* للمحافظة على الأسطر كاملة ومنسقة */
     }
     
-    /* تصميم زر النسخ الاحترافي والمنفصل أسفل النص */
-    .custom-copy-btn {
-        display: block;
-        width: 100%;
-        background-color: #3b82f6;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        padding: 12px;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
+    /* تخصيص شكل أزرار ستريمليت الأصلية لتصبح عريضة ومناسبة للمس على الجوال */
+    div.stButton > button {
+        background-color: #3b82f6 !important;
+        color: white !important;
+        border-radius: 10px !important;
+        border: none !important;
+        padding: 12px 20px !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        width: 100% !important; /* يملأ عرض الشاشة لسهولة الضغط */
         margin-top: 10px;
-        margin-bottom: 25px;
+        margin-bottom: 15px;
         box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
-        text-align: center;
-        -webkit-tap-highlight-color: transparent;
+        transition: background-color 0.2s;
     }
     
-    .custom-copy-btn:active {
-        background-color: #2563eb;
+    div.stButton > button:hover {
+        background-color: #2563eb !important;
     }
     
     /* إخفاء قوائم ستريمليت الإضافية ليكون المظهر نظيفاً */
@@ -124,22 +120,10 @@ Do not distort the face, eyes, hands, or body. Do not add random text, logos, or
 # عرض الكلام ككتابة عادية حرة وصافية 100% بدون أي بوكس
 st.markdown(f'<div class="prompt-text-pure">{prompt_1}</div>', unsafe_allow_html=True)
 
-# زر النسخ المنفصل تماماً والذي يدعم متصفحات الجوال بنجاح وبدون حظر أمني
-st.html(f"""
-<button class="custom-copy-btn" onclick="
-    const textArea = document.createElement('textarea');
-    textArea.value = `{prompt_1}`;
-    document.body.appendChild(textArea);
-    textArea.select();
-    try {{
-        document.execCommand('copy');
-        alert('تم نسخ النص الأول بنجاح! 🎉');
-    }} catch (err) {{
-        alert('عذراً، فشل النسخ التلقائي، يمكنك نسخه يدوياً.');
-    }}
-    document.body.removeChild(textArea);
-">📋 نسخ النص الأول كامل</button>
-""")
+# زر النسخ المنفصل والمستقر المعتمد على خوادم ستريمليت مباشرة
+if st.button("📋 اضغط هنا لتجهيز نسخ النص الأول", key="btn1"):
+    st.success("اضغط ضغطة مطولة على النص بالأسفل لنسخه فوراً:")
+    st.text_area(label="", value=prompt_1, height=180, disabled=False, label_visibility="collapsed")
 
 
 # --- البرومبت الثاني ---
@@ -151,22 +135,10 @@ The background is a clean, neutral studio backdrop. High detail, 8k resolution."
 # عرض الكلام الثاني ككتابة عادية حرة وصافية 100% بدون أي بوكس
 st.markdown(f'<div class="prompt-text-pure">{prompt_2}</div>', unsafe_allow_html=True)
 
-# زر النسخ المنفصل للنص الثاني
-st.html(f"""
-<button class="custom-copy-btn" onclick="
-    const textArea = document.createElement('textarea');
-    textArea.value = `{prompt_2}`;
-    document.body.appendChild(textArea);
-    textArea.select();
-    try {{
-        document.execCommand('copy');
-        alert('تم نسخ النص الثاني بنجاح! 🎉');
-    }} catch (err) {{
-        alert('عذراً، فشل النسخ التلقائي، يمكنك نسخه يدوياً.');
-    }}
-    document.body.removeChild(textArea);
-">📋 نسخ النص الثاني كامل</button>
-""")
+# زر النسخ المنفصل والمستقر للبرومبت الثاني
+if st.button("📋 اضغط هنا لتجهيز نسخ النص الثاني", key="btn2"):
+    st.success("اضغط ضغطة مطولة على النص بالأسفل لنسخه فوراً:")
+    st.text_area(label="", value=prompt_2, height=120, disabled=False, label_visibility="collapsed")
 
 st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
