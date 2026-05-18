@@ -113,8 +113,20 @@ st.markdown("<hr>", unsafe_allow_html=True)
 # --- البرومبت الأول ---
 st.markdown('<div class="section-card"><p class="section-title">1. Prompt</p></div>', unsafe_allow_html=True)
 
-prompt_1 = """A photorealistic graduation portrait of the young girl from the original image, maintaining her specific facial features, eyes, and sweet smile. She is wearing a classic black graduation cap and gown. She is sitting behind a small wooden desk with a large, open book in front of her. The lighting is soft studio quality, creating a professional and nostalgic atmosphere.
-The background is a clean, neutral studio backdrop. High detail, 8k resolution."""
+prompt_1 = """Transform the attached photo into a professional graduation portrait with a Computer Science theme.
+
+Keep the same original facial features and identity without changing the age, eyes, nose, mouth, or face shape.
+Place the person in the center with a straight, neat posture, looking naturally at the camera.
+
+Dress the person in a formal black graduation gown with a straight black square graduation cap on the head, and a gold tassel on the side of the cap.
+Add a white shirt and black tie under the gown if suitable.
+ 
+هنا الجزء الي يتغير ( تخلون بي قسمكم وتفاصيل الي تردوها بالباكراوند ) 
+Use a Computer Science background: dark blue tech studio, computer screens with programming code, circuit lines, digital icons, and soft blue lighting.
+Improve the photo quality, remove noise, scratches, and blur, enhance lighting and colors, and make the skin tone natural and clear for printing without over-editing.
+
+The final result should look realistic, clean, high-resolution, and like a professional studio graduation photo.
+Do not distort the face, eyes, hands, or body. Do not add random text, logos, or watermarks."""
 
 # عرض النص كاملاً ككتابة عادية بدون بوكس كود
 st.markdown(f'<div class="prompt-text">{prompt_1}</div>', unsafe_allow_html=True)
@@ -139,20 +151,8 @@ st.html(f"""
 # --- البرومبت الثاني ---
 st.markdown('<div class="section-card"><p class="section-title">2. Prompt</p></div>', unsafe_allow_html=True)
 
-prompt_2 = """Transform the attached photo into a professional graduation portrait with a Computer Science theme.
-
-Keep the same original facial features and identity without changing the age, eyes, nose, mouth, or face shape.
-Place the person in the center with a straight, neat posture, looking naturally at the camera.
-
-Dress the person in a formal black graduation gown with a straight black square graduation cap on the head, and a gold tassel on the side of the cap.
-Add a white shirt and black tie under the gown if suitable.
- 
-هنا الجزء الي يتغير ( تخلون بي قسمكم وتفاصيل الي تردوها بالباكراوند ) 
-Use a Computer Science background: dark blue tech studio, computer screens with programming code, circuit lines, digital icons, and soft blue lighting.
-Improve the photo quality, remove noise, scratches, and blur, enhance lighting and colors, and make the skin tone natural and clear for printing without over-editing.
-
-The final result should look realistic, clean, high-resolution, and like a professional studio graduation photo.
-Do not distort the face, eyes, hands, or body. Do not add random text, logos, or watermarks."""
+prompt_2 = """A photorealistic graduation portrait of the young girl from the original image, maintaining her specific facial features, eyes, and sweet smile. She is wearing a classic black graduation cap and gown. She is sitting behind a small wooden desk with a large, open book in front of her. The lighting is soft studio quality, creating a professional and nostalgic atmosphere.
+The background is a clean, neutral studio backdrop. High detail, 8k resolution."""
 
 # عرض النص الثاني كاملاً ككتابة عادية بدون بوكس كود
 st.markdown(f'<div class="prompt-text">{prompt_2}</div>', unsafe_allow_html=True)
