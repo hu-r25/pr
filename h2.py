@@ -2,7 +2,7 @@ import streamlit as st
 
 # إعدادات الصفحة - الافتراضية للجوال والوضع الداكن
 st.set_page_config(
-    page_title="منصة البرومبت الذكية", 
+    page_title="  التخرج برومبت ", 
     page_icon="🎓", 
     layout="centered",
     initial_sidebar_state="collapsed"
