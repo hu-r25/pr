@@ -1,4 +1,5 @@
 import streamlit as st
+import urllib.parse
 
 # إعدادات الصفحة - الافتراضية للجوال والوضع الداكن
 st.set_page_config(
@@ -8,7 +9,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# تصميم CSS سحري يخفي البوكس الرمادي تماماً ويجعل النص حراً وكاملاً
+# تصميم CSS احترافي مخصص بالكامل للوضع الداكن (Dark Mode) ومناسب للجوال
 st.markdown("""
     <style>
     /* خلفية التطبيق الداكنة */
@@ -49,38 +50,36 @@ st.markdown("""
         margin: 0;
     }
     
-    /* إخفاء البوكس الرمادي والحدود والظلال تماماً وجعل الخلفية شفافة 100% */
-    div[data-testid="stCodeBlock"] {
-        background-color: transparent !important; 
-        border: none !important; 
-        box-shadow: none !important; 
-        padding: 0 !important;
+    /* تنسيق النص الإنجليزي ليكون حراً تماماً وبدون أي بوكس أو حدود رمادية */
+    .prompt-text-pure {
+        color: #e2e8f0;
+        font-size: 16px;
+        line-height: 1.6;
+        text-align: left;
+        direction: ltr;
+        padding: 10px 5px;
+        word-wrap: break-word;
+        white-space: pre-wrap; /* المحافظة على الأسطر كاملة ومنسقة */
     }
     
-    /* تنسيق الخط ليظهر البرومبت ككتابة عادية حرة وممتدة بالكامل داخل الموقع */
-    div[data-testid="stCodeBlock"] pre {
-        background-color: transparent !important;
-        color: #e2e8f0 !important;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; 
-        font-size: 15px !important;
-        line-height: 1.6 !important;
-        white-space: pre-wrap !important; /* يمنع ظهور شريط التمرير ويجعل النص كاملاً ممتداً */
-        word-wrap: break-word !important;
-        padding: 10px 5px !important;
+    /* تنسيق زر النسخ السحري المتوافق مع الجوالات */
+    .copy-btn-link {
+        display: block;
+        text-align: center;
+        background-color: #3b82f6;
+        color: white !important;
+        padding: 12px;
+        border-radius: 10px;
+        text-decoration: none !important;
+        font-weight: bold;
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
     }
     
-    /* تخصيص أيقونة النسخ الأصلية المستقرة وجعلها زرقاء واضحة في الزاوية */
-    div[data-testid="stCodeBlock"] button {
-        background-color: #3b82f6 !important; 
-        color: #ffffff !important;
-        border-radius: 8px !important;
-        padding: 6px 14px !important;
-        top: -12px !important; 
-        right: 0px !important;
-    }
-    
-    div[data-testid="stCodeBlock"] button:hover {
-        background-color: #2563eb !important;
+    .copy-btn-link:hover {
+        background-color: #2563eb;
     }
     
     /* إخفاء قوائم ستريمليت الإضافية ليكون المظهر نظيفاً */
@@ -119,8 +118,12 @@ Improve the photo quality, remove noise, scratches, and blur, enhance lighting a
 The final result should look realistic, clean, high-resolution, and like a professional studio graduation photo.
 Do not distort the face, eyes, hands, or body. Do not add random text, logos, or watermarks."""
 
-# عرض النص عبر st.code المفرغ تماماً من الصندوق ليعمل زر النسخ الأصلي بكل استقرار
-st.code(prompt_1, language="text")
+# عرض الكلام كامل وبدون أي بوكس نهائياً كأنه نص عادي
+st.markdown(f'<div class="prompt-text-pure">{prompt_1}</div>', unsafe_allow_html=True)
+
+# زر النسخ المتوافق الذي يعمل على كل الجوالات بدون حظر أمني
+encoded_prompt_1 = urllib.parse.quote(prompt_1)
+st.markdown(f'<a href="https://copy-to-clipboard.vercel.app/?text={encoded_prompt_1}" target="_blank" class="copy-btn-link">📋 اضغط هنا لنسخ البرومبت الأول</a>', unsafe_allow_html=True)
 
 
 # --- البرومبت الثاني ---
@@ -129,10 +132,12 @@ st.markdown('<div class="section-card"><p class="section-title">2. Prompt</p></d
 prompt_2 = """A photorealistic graduation portrait of the young girl from the original image, maintaining her specific facial features, eyes, and sweet smile. She is wearing a classic black graduation cap and gown. She is sitting behind a small wooden desk with a large, open book in front of her. The lighting is soft studio quality, creating a professional and nostalgic atmosphere.
 The background is a clean, neutral studio backdrop. High detail, 8k resolution."""
 
-# عرض النص الثاني حراً وبدون بوكس
-st.code(prompt_2, language="text")
+# عرض الكلام الثاني كامل وبدون أي بوكس نهائياً كأنه نص عادي
+st.markdown(f'<div class="prompt-text-pure">{prompt_2}</div>', unsafe_allow_html=True)
+
+# زر النسخ المتوافق للبرومبت الثاني
+encoded_prompt_2 = urllib.parse.quote(prompt_2)
+st.markdown(f'<a href="https://copy-to-clipboard.vercel.app/?text={encoded_prompt_2}" target="_blank" class="copy-btn-link">📋 اضغط هنا لنسخ البرومبت الثاني</a>', unsafe_allow_html=True)
 
 st.markdown("<hr>", unsafe_allow_html=True)
-st.markdown('<p style="text-align:center; color:#64748b; font-size:12px;">انقر على أيقونة النسخ الزرقاء في زاوية كل نص لنسخه مباشرة</p>', unsafe_allow_html=True)
-
 st.markdown('</div>', unsafe_allow_html=True)
