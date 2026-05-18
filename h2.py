@@ -110,7 +110,7 @@ st.markdown("""
 st.markdown('<div class="rtl-container">', unsafe_allow_html=True)
 
 st.markdown('<div class="main-title">🎓 Prompt Graduation </div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">منصة احترافية بالوضع الداكن مخصصة للجوال لنسخ الأوامر بضغطة زر واحدة وبشكل مرتب.</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title">.</div>', unsafe_allow_html=True)
 
 st.markdown("<hr>", unsafe_allow_html=True)
 
@@ -147,6 +147,6 @@ st.code(prompt_2, language="text")
 st.markdown("<hr>", unsafe_allow_html=True)
 
 # تذييل الصفحة
-st.markdown('<p style="text-align:center; color:#64748b; font-size:12px;">انقر على الأيقونة الزرقاء داخل المربع لنسخ البرومبت فوراً</p>', unsafe_allow_html=True)
+st.markdown('<p style="text-align:center; color:#64748b; font-size:12px;"></p>', unsafe_allow_html=True)
 
 st.markdown('</div>', unsafe_allow_html=True)
