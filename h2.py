@@ -91,6 +91,7 @@ Place the person in the center with a straight, neat posture, looking naturally 
 Dress the person in a formal black graduation gown with a straight black square graduation cap on the head, and a gold tassel on the side of the cap.
 Add a white shirt and black tie under the gown if suitable.
  
+هنا الجزء الي يتغير ( تخلون بي قسمكم وتفاصيل الي تردوها بالباكراوند ) 
 Use a Computer Science background: dark blue tech studio, computer screens with programming code, circuit lines, digital icons, and soft blue lighting.
 Improve the photo quality, remove noise, scratches, and blur, enhance lighting and colors, and make the skin tone natural and clear for printing without over-editing.
 
